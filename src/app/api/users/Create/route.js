@@ -39,6 +39,7 @@ export async function POST(req) {
     
     
     // Check for duplicate emails case-insensitively using Prisma
+
     const duplicateUser = await prisma.user.findUnique({
       where: {
         email: email.toLowerCase(),

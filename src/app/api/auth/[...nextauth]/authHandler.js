@@ -55,7 +55,7 @@ export const handleOAuthLogin = async (profile, account) => {
           username: userData.username === undefined ? profile.name : userData.username,
           profilePicture: userData.profilePicture,
           role: account.role
-        }),
+        })
       });
       if (!response.ok) {
         throw new Error("Error creating user: ${response.statusText}");

@@ -4,8 +4,9 @@ import useImage from 'use-image';
 import handleSubmit from '@/app/Tasks/Sizing/page';
 
 const DisplayQuadrant = ({ quadrant, labels, setLabels }) => {
-
+  //"https://i.ibb.co/xtXVSdQM/ec86004a-97ec-4249-80c1-475fb1784842.jpg"
   const [konvaImage] = useImage(quadrant.image.imageURL);
+  //const [konvaImage] = useImage("https://i.ibb.co/xtXVSdQM/ec86004a-97ec-4249-80c1-475fb1784842.jpg");
   const [history, setHistory] = useState(() => JSON.parse(localStorage.getItem('history')) || []);
   const [future, setFuture] = useState(() => JSON.parse(localStorage.getItem('future')) || []);
   const [drawing, setDrawing] = useState(false);

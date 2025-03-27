@@ -23,8 +23,6 @@ export async function POST(req) {
         return new NextResponse(JSON.stringify({ message: 'Not Authenticated' }), { status: 403 });
       }
 
-     
-
       // Get the user ID from the session
       const userId = parseInt(session.user.id, 10);
 
@@ -50,9 +48,29 @@ export async function POST(req) {
       // If the userMark does not exist, create a new user mark
       // If the userMark already exists, update the existing user marks rock count
       // The user should not scout the same image more than once, however if they do, their new entry will overwrite the old one
+        //console.log(selectedOption)
+        const res = await fetch("http://localhost:8080/scouting/newUserMark",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId : userId,
+              imageId : imageId,
+              rockCount : selectedOption
+            }),
+          });
+
+        if (!res.ok) {
+            throw new Error("Failed to upsert user mark");
+        }
+
+        const newUserMark = await res.json();
+
+      /*
       const newUserMark = await prisma.userMark.upsert({
         where: {
-      
           userId_imageId_unique: {
             userId: userId,
             imageId: imageId,
@@ -68,6 +86,7 @@ export async function POST(req) {
           rockCount: selectedOption,
         },
       });
+       */
   
       // Successfully created the new user mark
       return new NextResponse(JSON.stringify({ newUserMark }), { status: 201 });

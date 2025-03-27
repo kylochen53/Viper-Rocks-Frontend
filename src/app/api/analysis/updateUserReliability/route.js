@@ -29,12 +29,27 @@ export async function POST(req, res) {
             console.log("newReliabilityScore:", newReliabilityScore);
 
             // Update user's reliabilityScore
+
+            await fetch("http://localhost:8080/api/users/updateUserReliability",
+                {
+                  method : "PUT",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                    body: JSON.stringify({
+                    id : userMark.userId,
+                    reliabilityScore : newReliabilityScore
+                  })
+          });
+            /*
             await prisma.User.update({
               where: { id: userMark.userId },
               data: {
                 reliabilityScore: newReliabilityScore,
               },
             });
+             */
+
             return {userid: userMark.userId, reliabilityScore: newReliabilityScore};
           }))
 

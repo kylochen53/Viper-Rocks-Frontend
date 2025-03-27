@@ -36,16 +36,19 @@ const ScoutingPage = () => {
     const fetchImages = async () => {
       const cachedImages = localStorage.getItem("cachedImages");
       const imagesData = cachedImages ? JSON.parse(cachedImages) : null;
-      const cacheIsValid =
-        imagesData && new Date().getTime() - imagesData.timestamp < 86400000; // 24hours*60*60*1000
+      //const cacheIsValid =
+        //imagesData && new Date().getTime() - imagesData.timestamp < 86400000; // 24hours*60*60*1000
 
+      const cacheIsValid = false;
       if (cacheIsValid) {
         setImages(imagesData.data);
       } else {
         try {
-          const response = await fetch("http://localhost:8080/api/images");
+          const response = await fetch("/api/images");
           if (!response.ok) throw new Error("Failed to fetch images");
           const data = await response.json();
+
+          console.log("Cached images found?", JSON.stringify(data, null, 2));
           setImages(data);
           localStorage.setItem(
             "cachedImages",
@@ -77,7 +80,6 @@ const ScoutingPage = () => {
   const handleSubmit = async (selectedOption) => {
     if (images.length > 0 && currentIndex < images.length) {
       const currentImageId = images[currentIndex].id;
-
       try {
         const response = await fetch("/api/scouting/rockcount", {
           method: "POST",
@@ -101,7 +103,7 @@ const ScoutingPage = () => {
       }
     }
   };
-
+  //{images.length > 0 && <DisplayImage image={images[currentIndex]}
   return (
     <div>
       <div style={{ paddingLeft: "20px", paddingTop:"30px"}}>
@@ -116,8 +118,11 @@ const ScoutingPage = () => {
           flexDirection: isMobile.innerWidth < 600 ? "column" : "row",
         }}
       >
+
         <div style={{ flex: 1 }}>
-          {images.length > 0 && <DisplayImage image={images[currentIndex]} />}
+          {images.length > 0 && (
+              <DisplayImage image={images[currentIndex]} />
+          )}
         </div>
         <div style={{ flex: 1 }}>
           <h4 style={{ marginLeft: "10px" }}>
