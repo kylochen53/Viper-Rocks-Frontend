@@ -1,49 +1,48 @@
 [
   {
-    "title": "Database Developer/Front End Developer/Back End Developer",
+    "title": "Architecture/design lead",
+    "name": "Hovhannes Babayan"
+  },
+  {
+    "title": "Project Lead",
     "name": "Steven Chen"
   },
   {
-    "title": "Front End Developer",
-    "name": "Diana Arteaga-Andrade"
-  },
-  {
-    "title": "Front End Developer",
-    "name": "Santiago Bautista",
+    "title": "Database Schema lead",
+    "name": "George Ewest",
     "img": "/OurTeam/santiago-bautista.png"
   },
   {
-    "title": "Database Developer",
-    "name": "Michael Gibson"
+    "title": "Customer liaison/requirements lead.",
+    "name": "Hober Granados"
   },
   {
     "title": "Front End Developer",
     "name": "Christian Gomez"
   },
   {
-    "title": "Graduate Assistant",
-    "name": "Jerome Pineda",
-    "img": "/OurTeam/jerome-pineda.jpg"
-  },
-  {
-    "title": "Database Developer",
-    "name": "Nida Sheikh",
+    "title": "Documentation Lead",
+    "name": "Jaden Lazo",
     "img": "/OurTeam/nida-sheikh.jpg"
   },
   {
-    "title": "Database Developer",
-    "name": "Zainab Sulaiman"
+    "title": "Project Consultant",
+    "name": "Jacky Man"
   },
   {
-    "title": "Database Developer",
-    "name": "Diane Tabilas"
+    "title": "Database Schema lead",
+    "name": "Barnabas Novak"
   },
   {
-    "title": "Front End Developer",
-    "name": "Angy Xajil"
+    "title": "Backend and component lead",
+    "name": "Nathan Rodriguez-Lyn"
   },
   {
-    "title": "Front End Developer",
-    "name": "Tammy Xaypraseuth"
+    "title": "Presentation Lead",
+    "name": "Allen Tamrazian"
+  },
+  {
+    "title": "UI Lead",
+    "name": "Jordy Ye Cao"
   }
 ]

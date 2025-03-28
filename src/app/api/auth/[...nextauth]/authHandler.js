@@ -20,7 +20,7 @@ export const handleOAuthLogin = async (profile, account) => {
     // Check if the user exists in the database
     let user;
     let userResponse = await fetch(`http://localhost:8080/api/users/${userData.email}`);
-    if (userResponse.ok) {
+    if (userResponse.exists === true) {
       user = await userResponse.json();
     } else {
       user = null;
@@ -43,7 +43,7 @@ export const handleOAuthLogin = async (profile, account) => {
     }*/
 
     // If the user doesn't exist, create a new user
-    if (!user) {
+    if (user.exist !== true) {
       const response = await fetch("http://localhost:8080/api/users/", {
         method: "POST",
         headers: {

@@ -48,7 +48,7 @@ export async function POST(req) {
 
     const res = await fetch(`http://localhost:8080/api/users/${email}`);
     const check = await res.json();
-    
+
     // If duplicate user exists, return error
     if (check.exists === true) {
       return NextResponse.json(

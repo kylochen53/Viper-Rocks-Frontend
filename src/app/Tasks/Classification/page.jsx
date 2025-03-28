@@ -27,11 +27,15 @@ const ClassificationPage = () => {
   useEffect(() => {
     const fetchImages = async () => {
       // Attempt to load images from Local Storage first
+
       const cachedImages = localStorage.getItem('cachedImages');
       const imagesData = cachedImages ? JSON.parse(cachedImages) : null;
 
       // Check if cache exists and is valid (e.g., less than 24 hours old)
-      const cacheIsValid = imagesData && new Date().getTime() - imagesData.timestamp < 86400000; // 24hours*60*60*1000
+      //const cacheIsValid = imagesData && new Date().getTime() - imagesData.timestamp < 86400000; // 24hours*60*60*1000
+
+      //force image to load for testing purposes
+      const cacheIsValid = false;
 
       if (cacheIsValid) {
         // Use cached images
@@ -39,10 +43,11 @@ const ClassificationPage = () => {
       } else {
         // Fetch from API as cache is missing or outdated
         try {
+          console.log("Trying fetch...");
           const response = await fetch('/api/images');
           if (!response.ok) throw new Error('Failed to fetch images');
-          const data = await response.json();
-
+          const data = await response.text();
+          console.log("Fetched data:", data);
           // Update state with fetched images
           setImages(data);
 
@@ -70,7 +75,10 @@ const ClassificationPage = () => {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between', padding: '20px' }}>
       <div style={{ flex: 1 }}>
-        {images.length > 0 && <DisplayImage image={images[currentIndex]} />}
+        {/*//{images.length > 0 && <DisplayImage image={images[currentIndex]} />}*/
+          <DisplayImage image="https://i.ibb.co/xtXVSdQM/ec86004a-97ec-4249-80c1-475fb1784842.jpg" />
+        }
+
       </div>
       <div style={{ flex: 1 }}>
         <p>
