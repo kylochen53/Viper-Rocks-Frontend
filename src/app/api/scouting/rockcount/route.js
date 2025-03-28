@@ -30,7 +30,8 @@ export async function POST(req) {
       const data = await req.json();
 
       // Destructure the imageId and selectedOption from the request body
-      const imageId = parseInt(data.imageId, 10); 
+      const imageId = parseInt(data.imageId, 10);
+
       const selectedOption = parseInt(data.selectedOption, 10); 
 
       // Log the user ID, image ID, selected option, and request body
@@ -42,14 +43,12 @@ export async function POST(req) {
         return new NextResponse(JSON.stringify({ message: 'Image ID and selected option are required', userId, imageId, selectedOption }), { status: 400 });
       } 
 
-    
-
 
       // If the userMark does not exist, create a new user mark
       // If the userMark already exists, update the existing user marks rock count
       // The user should not scout the same image more than once, however if they do, their new entry will overwrite the old one
-        //console.log(selectedOption)
-        const res = await fetch("http://localhost:8080/scouting/newUserMark",
+
+        const res = await fetch("http://localhost:8080/api/scouting/newUserMark",
           {
             method: "POST",
             headers: {
@@ -61,7 +60,6 @@ export async function POST(req) {
               rockCount : selectedOption
             }),
           });
-
         if (!res.ok) {
             throw new Error("Failed to upsert user mark");
         }

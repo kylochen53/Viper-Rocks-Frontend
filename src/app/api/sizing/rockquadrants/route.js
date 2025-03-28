@@ -17,19 +17,9 @@ export async function GET(req) {
           });*/
         // If images are found, return them
 
-        const rockQuadrants = [{
-            "id": 1,
-            "imageId": 1,
-            "x": 0,
-            "y": 0,
-            "width": 1000,
-            "height": 1000,
-            "quadrantNumber": 1,
-            "image": {
-                "id": 1,
-                "imageURL": "https://i.ibb.co/pBTgQcML/IMG-6999.jpg"
-            }
-        }];
+        const res = await fetch("http://localhost:8080/api/rockQuadrants")
+
+        const rockQuadrants = await res.json();
 
       return new NextResponse(JSON.stringify( rockQuadrants ), { status: 201 });
     } catch (error) {

@@ -8,13 +8,15 @@ export async function GET(req) {
   try {
     // Fetch all images from the "Image" table in the database
     const res = await fetch("http://localhost:8080/api/images");
-    const rawImages = await res.json();
-    // If images are found, return them
+    const images = await res.json();
 
+    // If images are found, return them
+    /*
     const images = rawImages.map((item) => ({
-      imageId : item.imageId,
-      imageURL: item.imageURL?.string || "", // use .string and fallback to empty string
-    }));
+      id : item.id,
+      imageURL: item.imageURL// use .string and fallback to empty string
+    }));*/
+
     return NextResponse.json(images, {
       status: 200 // OK status
     });

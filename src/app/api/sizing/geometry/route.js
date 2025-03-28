@@ -33,8 +33,8 @@ export async function POST(req) {
 
     try {
       //console.log(req.headers); // Ensure it's application/json
-  //const rawBody = await req.text(); // Temporarily log raw body
-  //console.log(rawBody);
+      //   const rawBody = await req.text(); // Temporarily log raw body
+      //   console.log(rawBody);
 
 
 
@@ -46,10 +46,6 @@ export async function POST(req) {
         // Not Authenticated
         return new NextResponse(JSON.stringify({ message: 'Not Authenticated' }), { status: 403 });
       }
-
-
-
-
 
       const { geometries, quadrant } = await req.json();
       const userId = session.user.id;
@@ -71,26 +67,47 @@ async function saveGeometries(geometries, userId, imageId, quadrant) {
   const qx = quadrantIndex % n;
   const qy = Math.floor(quadrantIndex / n);
 
-  const queries = geometries.map(geometry => {
-      let coordinates = geometry.coordinates[0];
-      if (coordinates[0] !== coordinates[coordinates.length - 1]) {
-          coordinates.push(coordinates[0]);
-      }
+    const queries = await Promise.all(geometries.map(async (geometry) => {
+        let coordinates = geometry.coordinates[0];
+        if (coordinates[0] !== coordinates[coordinates.length - 1]) {
+            coordinates.push(coordinates[0]);
+        }
 
-      const globalCoordinates = coordinates.map(([x, y]) => {
-          const gx = Math.round(qx * width + x);
-          const gy = imageHeight - (Math.round(qy * height + y));
-          return `${gx} ${gy}`;
-      }).join(", ");
+        const globalCoordinates = coordinates.map(([x, y]) => {
 
-      const wkt = `POLYGON((${globalCoordinates}))`;
-      return prisma.$executeRawUnsafe(
-          `INSERT INTO "UserGeometry" ("userId", "drawing", "imageId") VALUES ($1, ST_GeomFromText($2), $3) RETURNING id;`,
-          userId,
-          wkt,
-          imageId
-      );
-  });
+            const gx = Math.round(qx * width + x);
+            const gy = imageHeight - (Math.round(qy * height + y));
+            return `${gx} ${gy}`;
+        }).join(", ");
 
-  return prisma.$transaction(queries);
+
+        const wkt = `POLYGON((${globalCoordinates}))`;
+
+        // return prisma.$executeRawUnsafe(
+        //     INSERT INTO "UserGeometry" ("userId", "drawing", "imageId") VALUES ($1, ST_GeomFromText($2), $3) RETURNING id;,
+        //     userId,
+        //     wkt,
+        //     imageId
+        // );
+
+        const res = await fetch("http://localhost:8080/api/sizing/geometry", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userId: userId,
+                wkt: wkt,
+                imageId: imageId
+            }),
+        });
+
+        if (!res.ok) {
+            const errorResponse = await res.text();
+            throw new Error(`Error: ${errorResponse.message} - ${errorResponse.error}`);
+        }
+
+        return await res.json();
+    }));
+  return queries;
 }

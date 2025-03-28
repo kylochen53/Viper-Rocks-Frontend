@@ -103,7 +103,6 @@ const ScoutingPage = () => {
       }
     }
   };
-  //{images.length > 0 && <DisplayImage image={images[currentIndex]}
   return (
     <div>
       <div style={{ paddingLeft: "20px", paddingTop:"30px"}}>
