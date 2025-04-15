@@ -15,7 +15,7 @@ export default function Home() {
           style={{ backgroundImage: "url(/moon101-the-lunar-surface.jpg)" }}
         ></div>
         <div className="relative text-center flex flex-col p-24">
-          <span className="text-h1-alt text-white">VIPER ROCKS</span>
+          <span className="text-h1-alt text-white">LUNAR ROCKS</span>
           <span className="text-h3 text-white">
             Citizen Scientists Needed. Sign up to identify moon rocks for Viper
             rover expeditions.

@@ -59,11 +59,11 @@ export const Nav = async () => {
                 <a
                   className="hidden lg:flex flex-row items-center text-3xl py-px leading-tighter tracking-wide"
                   href="/"
-                  title="VIPER ROCKS"
+                  title="LUNAR ROCKS"
                 >
                   <span></span>
                   <span className="border-l border-white pl-5 ml-5">
-                    VIPER ROCKS
+                    LUNAR ROCKS
                   </span>
                 </a>
               </div>
