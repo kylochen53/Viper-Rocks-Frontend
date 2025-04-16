@@ -26,10 +26,11 @@ const QuestionsPage = () => {
   ];
 
   return (
-      <div className="p-8">
+      <div className="min-h-screen flex flex-col">
+        <main className="flex-grow p-8">
       <div className={styles.questionspagecontainer}>
         <section className={styles.faqssection}>
-          <h2>Frequently Asked Questions</h2>
+          <h2 className="mb-6">Frequently Asked Questions</h2>
           <div className={styles.faqlist}>
             {faqs.map((faq, index) => (
                 <div key={index} className={styles.faqitem}>
@@ -42,13 +43,12 @@ const QuestionsPage = () => {
                     </AccordionItem>
                   </Accordion>
                 </div>
-
-
             ))}
           </div>
         </section>
         {/* Add more sections or components as needed */}
       </div>
+        </main>
       </div>
   );
 };
