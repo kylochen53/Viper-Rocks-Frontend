@@ -1,6 +1,13 @@
 import React from 'react';
 import styles from "./faq.module.css";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
 const QuestionsPage = () => {
   const faqs = [
     {
@@ -19,21 +26,29 @@ const QuestionsPage = () => {
   ];
 
   return (
-    <div className={styles.questionspagecontainer}>
-      <section className={styles.faqssection}>
-        <h2>Frequently Asked Questions</h2>
-        <div className={styles.faqlist}>
-          {faqs.map((faq, index) => (
-            <div key={index} className={styles.faqitem}>
-              <h3>{faq.question}</h3>
-              <p>{faq.answer}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <div className={styles.questionspagecontainer}>
+        <section className={styles.faqssection}>
+          <h2>Frequently Asked Questions</h2>
 
-      {/* Add more sections or components as needed */}
-    </div>
+          <div className={styles.faqlist}>
+            {faqs.map((faq, index) => (
+                <div key={index} className={styles.faqitem}>
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger> <h3>{faq.question}</h3></AccordionTrigger>
+                      <AccordionContent>
+                        <p>{faq.answer}</p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+
+
+            ))}
+          </div>
+        </section>
+        {/* Add more sections or components as needed */}
+      </div>
   );
 };
 
