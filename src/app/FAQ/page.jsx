@@ -26,10 +26,10 @@ const QuestionsPage = () => {
   ];
 
   return (
+      <div className="p-8">
       <div className={styles.questionspagecontainer}>
         <section className={styles.faqssection}>
           <h2>Frequently Asked Questions</h2>
-
           <div className={styles.faqlist}>
             {faqs.map((faq, index) => (
                 <div key={index} className={styles.faqitem}>
@@ -48,6 +48,7 @@ const QuestionsPage = () => {
           </div>
         </section>
         {/* Add more sections or components as needed */}
+      </div>
       </div>
   );
 };
