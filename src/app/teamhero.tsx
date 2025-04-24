@@ -15,7 +15,7 @@ export default function ContentSection() {
 
                         <Button asChild variant="secondary" size="sm" className="gap-1 pr-1.5">
                             <Link href="/AboutUs">
-                                <span>Learn More</span>
+                                <span>About Us</span>
                                 <ChevronRight className="size-2" />
                             </Link>
                         </Button>

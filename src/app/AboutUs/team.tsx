@@ -1,5 +1,5 @@
-// avatar: "/OurTeam/hovhannes-babyan-png.png",
 import Link from 'next/link'
+import Image from 'next/image';
 
 const members = [
     {
@@ -51,14 +51,14 @@ const members = [
         link: '#',
     },
     {
-        name: 'Presentation Lead',
-        role: 'Allen Tamrazian',
+        name: 'Allen Tamrazian',
+        role: 'Presentation Lead',
         avatar: '/OurTeam/allen-tamrazian.jpg',
         link: '#',
     },
     {
-        name: 'UI Lead',
-        role: 'Jordy Ye Cao',
+        name: 'Jordy Ye Cao',
+        role: 'UI Lead',
         avatar: '/OurTeam/jordy-ye-cao.jpg',
         link: '#',
     },
@@ -68,10 +68,19 @@ export default function TeamSection() {
     return (
         <section className="bg-gray-50 py-16 md:py-32 dark:bg-transparent">
             <div className="mx-auto max-w-5xl border-t px-6">
-                <span className="text-caption -ml-6 -mt-3.5 block w-max bg-gray-50 px-6 dark:bg-gray-950">Team</span>
-                <div className="mt-12 gap-4 sm:grid sm:grid-cols-2 md:mt-24">
+
+                <span className="text-caption -ml-6 -mt-3.5 block w-max bg-gray-50 px-6 dark:bg-gray-950">
+                      <Image
+                          src="https://upload.wikimedia.org/wikipedia/commons/4/42/CalStateLA_Logo.svg"
+                          alt="CSULA Logo"
+                          width={40}
+                          height={40}
+                          className="inline-block"
+                      />
+                     Team</span>
+                <div className="mt-12 gap-2 sm:grid sm:grid-cols-2 md:mt-24">
                     <div className="sm:w-2/5">
-                        <h2 className="text-3xl font-bold sm:text-4xl">Our dream team</h2>
+                        <h2 className="text-3xl font-bold sm:text-4xl">Built by Students, Powered by Purpose</h2>
                     </div>
                     <div className="mt-6 sm:mt-0">
                         <p>Rooted at CSULA, our team is driven by a passion for innovation, a commitment to learning, and a belief that technology can empower communities and redefine what’s possible.</p>

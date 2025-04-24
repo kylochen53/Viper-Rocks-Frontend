@@ -8,6 +8,7 @@ import {Hero1} from "@/app/hero";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
+      {/*our old content*/}
       {/*<div*/}
       {/*  id="#"*/}
       {/*  className="min-h-screen flex justify-center items-center text-center"*/}
@@ -26,6 +27,7 @@ export default function Home() {
       {/*  </div>*/}
       {/*</div>*/}
         <section className="w-full flex justify-center items-center min-h-[80vh] bg-gray">
+          {/*Main Hero */}
       <Hero1 heading={"Lunar Rocks"} description={"Become a space explorer from your laptop.\n" +
           "Help scientists identify and classify moon rocks to guide the Viper rover."} image={{ src: "/hero.jpg", alt: "Lunar surface background" }}/>
         </section>
@@ -41,6 +43,7 @@ export default function Home() {
             </span>
           </div>
         </div>
+        {/*Hero for team (Group photo) */}
         <ContentSection />
         <div
           className="relative flex flex-col p-24 bg-fixed bg-center bg-no-repeat bg-cover"
@@ -52,6 +55,7 @@ export default function Home() {
           {/*<div>*/}
           {/*  <BlockCardGroup cards={OurTeamData} />*/}
           {/*</div>*/}
+          {/*Features which are the tasks cards on the page*/}
           <Features />
         </div>
       </div>

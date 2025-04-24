@@ -8,7 +8,7 @@ export default function Features() {
             <div className="@container mx-auto max-w-5xl px-6">
                 <div className="text-center">
                     <h2 className="text-balance text-4xl font-semibold lg:text-5xl">Tasks</h2>
-                    <p className="mt-4">At Lunar Rocks, we focus on three primary tasks to help explore and study the Moon's surface.</p>
+                    <p className="mt-4">We focus on three primary tasks to help explore and study the Moon's surface.</p>
                 </div>
                 <div className="mx-auto mt-8 grid grid-cols-1 gap-6 text-center md:grid-cols-2 lg:grid-cols-3 md:mt-16 max-w-5xl">
                 <Card className="group shadow-zinc-950/5">
