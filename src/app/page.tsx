@@ -39,12 +39,12 @@ export default function Home() {
           className="relative flex flex-col p-24 bg-fixed bg-center bg-no-repeat bg-cover"
           style={{ backgroundImage: "url(/space.webp)" }}
         >
-          <span className="text-h1 mb-10 text-center text-white">
-            MEET THE TEAM
-          </span>
-          <div>
-            <BlockCardGroup cards={OurTeamData} />
-          </div>
+          {/*<span className="text-h1 mb-10 text-center text-white">*/}
+          {/*  MEET THE TEAM*/}
+          {/*</span>*/}
+          {/*<div>*/}
+          {/*  <BlockCardGroup cards={OurTeamData} />*/}
+          {/*</div>*/}
         </div>
       </div>
     </main>

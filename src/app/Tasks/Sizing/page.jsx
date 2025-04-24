@@ -5,7 +5,7 @@ import LoadingSpinner from "../../(components)/LoadingSpinner/LoadingSpinner";
 import dynamic from 'next/dynamic';
 import { signIn, useSession } from "next-auth/react";
 
-const DisplayQuadrant = dynamic(() => import('../../(components)/Sizing/DisplayQuadrant/canvas'), { ssr: false });
+const DisplayQuadrant = dynamic(() => import('../../(components)/Sizing/DisplayQuadrant/canvas.js'), { ssr: false });
 
 const SizingPage = () => {
   const { data: session, status } = useSession();
@@ -18,7 +18,7 @@ const SizingPage = () => {
   }, [status]);
 
   const [quadrants, setQuadrants] = useState([]);
-  
+
   // Retrieve the currentIndex from localStorage or default to 0 if not found
   const [currentIndex, setCurrentIndex] = useState(() => {
     if (typeof window !== 'undefined'){
@@ -28,12 +28,12 @@ const SizingPage = () => {
       return 0;
     }
   });
-  
+
   const [labels, setLabels] = useState(() => {
     // Initialize labels from localStorage
     return JSON.parse(localStorage.getItem('savedLabels')) || [];
   });
-  
+
   const [isLoading, setIsLoading] = useState(true); // Combined loading state
 
   useEffect(() => {
@@ -80,37 +80,37 @@ const SizingPage = () => {
     setIsLoading(false); // Set loading state to false after submission
   };
 
-    const handleNextQuadrant = () => {
-        setCurrentIndex(prevIndex => (prevIndex + 1) % quadrants.length);
-    };
+  const handleNextQuadrant = () => {
+    setCurrentIndex(prevIndex => (prevIndex + 1) % quadrants.length);
+  };
 
   return (
-    <>
-     <div style={{ paddingLeft: "25px", paddingTop:"30px", paddingBottom:"10px"}}>
-        <Link href="/Explore">Back</Link>
-      </div>
+      <>
+        <div style={{ paddingLeft: "25px", paddingTop:"30px", paddingBottom:"10px"}}>
+          <Link href="/Explore">Back</Link>
+        </div>
 
-      <h1 style={{ paddingLeft: "20px"}}>Sizing</h1>
-      <div style={{ margin: '20px' }}> {/* Adjust margin size as needed */}
-        {isLoading ? (
-          <LoadingSpinner /> 
-        ) : (
-          quadrants.length > 0 && (
-            <DisplayQuadrant
-              key={`${quadrants[currentIndex].image.imageURL}-${quadrants[currentIndex].id}`}
-              quadrant={quadrants[currentIndex]}
-              labels={labels}
-              setLabels={setLabels}
-            />
-          )
-        )}
-        {!isLoading && (
-                <button style={{ margin: '10px', padding: '10px', borderRadius: '10px', background: '#007bff', color: '#fff', cursor: 'pointer', border: 'none', textDecoration: 'none', width: '120px' }} onClick={handleSubmit}>Submit</button>
-        )}
-      </div>
-    </>
+        <h1 style={{ paddingLeft: "20px"}}>Sizing</h1>
+        <div style={{ margin: '20px' }}> {/* Adjust margin size as needed */}
+          {isLoading ? (
+              <LoadingSpinner />
+          ) : (
+              quadrants.length > 0 && (
+                  <DisplayQuadrant
+                      key={`${quadrants[currentIndex].image.imageURL}-${quadrants[currentIndex].id}`}
+                      quadrant={quadrants[currentIndex]}
+                      labels={labels}
+                      setLabels={setLabels}
+                  />
+              )
+          )}
+          {!isLoading && (
+              <button style={{ margin: '10px', padding: '10px', borderRadius: '10px', background: '#007bff', color: '#fff', cursor: 'pointer', border: 'none', textDecoration: 'none', width: '120px' }} onClick={handleSubmit}>Submit</button>
+          )}
+        </div>
+      </>
   );
-  
+
 };
 
 export default SizingPage;

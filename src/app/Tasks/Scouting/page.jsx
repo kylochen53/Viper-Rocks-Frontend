@@ -5,13 +5,11 @@ import dynamic from "next/dynamic";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-
 const DisplayImage = dynamic(
-  () => import("../../(components)/Scouting/DisplayImage"),
-  {
-    ssr: false,
-  }
+    () => import("../../(components)/Scouting/DisplayImage"),
+    {
+      ssr: false,
+    }
 );
 
 const ScoutingPage = () => {
@@ -39,7 +37,7 @@ const ScoutingPage = () => {
       const cachedImages = localStorage.getItem("cachedImages");
       const imagesData = cachedImages ? JSON.parse(cachedImages) : null;
       //const cacheIsValid =
-        //imagesData && new Date().getTime() - imagesData.timestamp < 86400000; // 24hours*60*60*1000
+      //imagesData && new Date().getTime() - imagesData.timestamp < 86400000; // 24hours*60*60*1000
 
       const cacheIsValid = false;
       if (cacheIsValid) {
@@ -53,8 +51,8 @@ const ScoutingPage = () => {
           console.log("Cached images found?", JSON.stringify(data, null, 2));
           setImages(data);
           localStorage.setItem(
-            "cachedImages",
-            JSON.stringify({ data, timestamp: new Date().getTime() })
+              "cachedImages",
+              JSON.stringify({ data, timestamp: new Date().getTime() })
           );
         } catch (error) {
           console.error("Error:", error);
@@ -106,42 +104,35 @@ const ScoutingPage = () => {
     }
   };
   return (
-      <Card className="m-8 shadow-xl">
-        <CardHeader>
-          <CardTitle>Rock Identification</CardTitle>
-          <CardDescription>Select how many rocks are shown in the image.</CardDescription>
-        </CardHeader>
+      <div>
+        <div style={{ paddingLeft: "20px", paddingTop:"30px"}}>
+          <Link href="/Explore">Back</Link>
+        </div>
 
-        <CardContent className="px-10 py-6">
-          <div className="mb-4">
-            <Link href="/Explore" className="text-blue-600 hover:underline">← Back</Link>
+        <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "20px",
+              flexDirection: isMobile.innerWidth < 600 ? "column" : "row",
+            }}
+        >
+
+          <div style={{ flex: 1 }}>
+            {images.length > 0 && (
+                <DisplayImage image={images[currentIndex]} />
+            )}
           </div>
-
-          <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                gap: "40px",
-                flexDirection: isMobile.innerWidth < 600 ? "column" : "row",
-              }}
-          >
-            <div style={{ flex: 1 }}>
-              {images.length > 0 && (
-                  <DisplayImage image={images[currentIndex]} />
-              )}
-            </div>
-            <div style={{ flex: 1 }}>
-              <h4 className="text-lg font-semibold mb-2">How many rocks are in this image?</h4>
-              <p className="mb-4">Select one of the following:</p>
-              <OptionSelector onSubmit={handleSubmit} />
-            </div>
+          <div style={{ flex: 1 }}>
+            <h4 style={{ marginLeft: "10px" }}>
+              How many rocks are in this image?
+            </h4>
+            <br></br>
+            <p style={{ marginLeft: "10px" }}>Select one of the following:</p>
+            <OptionSelector onSubmit={handleSubmit} />
           </div>
-        </CardContent>
-
-        <CardFooter className="text-sm text-muted-foreground px-10 pb-6">
-          Thanks for contributing!
-        </CardFooter>
-      </Card>
+        </div>
+      </div>
   );
 };
 

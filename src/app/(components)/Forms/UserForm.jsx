@@ -1,6 +1,7 @@
 // Component that displays the form for creating a new user
 "use client";
 
+
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -133,6 +134,7 @@ const UserForm = () => {
           </form>
         </div>  
       </div>
+
       </>
     );
   };

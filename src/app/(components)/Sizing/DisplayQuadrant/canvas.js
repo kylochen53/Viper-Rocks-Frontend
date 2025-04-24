@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Stage, Layer, Image, Line } from 'react-konva';
 import useImage from 'use-image';
-import handleSubmit from '@/app/Tasks/Sizing/page';
+//import handleSubmit from '@/app/Tasks/Sizing/page';
 
 const DisplayQuadrant = ({ quadrant, labels, setLabels }) => {
   //"https://i.ibb.co/xtXVSdQM/ec86004a-97ec-4249-80c1-475fb1784842.jpg"

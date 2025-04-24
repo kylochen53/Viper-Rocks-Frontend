@@ -14,6 +14,8 @@
   }
 }
 
+Known Error/Glitch!
+if undo / redo has too much history saved it will break the WKT
 */
 
 
@@ -82,7 +84,6 @@ async function saveGeometries(geometries, userId, imageId, quadrant) {
 
 
         const wkt = `POLYGON((${globalCoordinates}))`;
-
         // return prisma.$executeRawUnsafe(
         //     INSERT INTO "UserGeometry" ("userId", "drawing", "imageId") VALUES ($1, ST_GeomFromText($2), $3) RETURNING id;,
         //     userId,

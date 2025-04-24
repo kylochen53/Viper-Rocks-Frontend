@@ -4,10 +4,10 @@ const OptionSelector = ({ onSubmit }) => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const options = [
-    { text: "<100", value: 100 },
-    { text: "100≥x<200", value: 200 },
-    { text: "200≤x<300", value: 300 },
-    { text: "300≤x<400", value: 400 },
+    { text: "Less than 100", value: 100 },
+    { text: "Between 100 and 199", value: 200 },
+    { text: "Between 200 and 299", value: 300 },
+    { text: "Between 300 and 399", value: 400 },
   ];
 
   const handleSubmit = (e) => {
