@@ -2,6 +2,7 @@ import Image from "next/image";
 import { DarkButton } from "./(components)/Button";
 import { BlockCardGroup } from "./(components)/Blocks";
 import OurTeamData from "@/data/ourTeam.json";
+import Features from "./tasks";
 
 export default function Home() {
   return (
@@ -45,6 +46,7 @@ export default function Home() {
           {/*<div>*/}
           {/*  <BlockCardGroup cards={OurTeamData} />*/}
           {/*</div>*/}
+          <Features />
         </div>
       </div>
     </main>

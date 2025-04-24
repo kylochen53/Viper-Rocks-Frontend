@@ -12,7 +12,7 @@ const members = [
         name: 'Steven Chen',
         role: 'Project Lead',
         avatar: '/OurTeam/steven-chen.jpg',
-        link: '#',
+        link: 'https://github.com/kylochen53',
     },
     {
         name: 'George Ewest',
