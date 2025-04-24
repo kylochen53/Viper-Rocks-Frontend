@@ -62,7 +62,7 @@ const ClassifyingPage = () => {
     <>
       <div style={{ display: "flex", justifyContent: "space-between", padding: "20px" }}>
         <div style={{ flex: 1 }}>
-          {rocks.length > 0 && <DisplayRocks rock={rocks[currentIndex]} />}
+          {/*rocks.length > 0 && <DisplayRocks rock={rocks[currentIndex]} />*/}
         </div>
       </div>
       <button onClick={handleSubmit}>Submit</button>
